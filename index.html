@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+    
+    <head>
+        <title>Presi</title>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="css/style.css">
+
+        <link rel="shortcut icon" href="res/presi-logo.png">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quicksand"/>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lora">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Karla">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Anton">
+    </head>
+
+    <body>
+
+        <div class="slide-element-contextmenu contextmenu" style="display: none;">
+            <div style="grid-template-columns: repeat(3, 1fr);">
+                <div class="button-block">
+                    <div class="button-block-header">
+                        Textgröße
+                    </div>
+                    <div class="button-block-footer">
+                        <button class="increase-font-size-btn">
+                            +
+                        </button>
+                        <button class="decrease-font-size-btn">
+                            -
+                        </button>
+                    </div>
+                </div>
+                <div class="button-block">
+                    <div class="button-block-header">
+                        Textlayout
+                    </div>
+                    <div class="button-block-footer" style="grid-template-columns: repeat(3, 1fr);">
+                        <button class="set-textlayout-left-btn">
+                            l
+                        </button>
+                        <button class="set-textlayout-center-btn">
+                            c
+                        </button>
+                        <button class="set-textlayout-right-btn">
+                            r
+                        </button>
+                    </div>
+                </div>
+                <div class="button-block">
+                    <div class="button-block-header">
+                        Textfarbe
+                    </div>
+                    <div class="button-block-footer" style="grid-template-columns: repeat(1, 1fr);">
+                        <input type="color" class="text-color-input" value="#000000">
+                    </div>
+                </div>
+            </div>
+            <div style="grid-template-columns: repeat(2, 1fr);">
+                <div class="button-block">
+                    <div class="button-block-header">
+                        Schriftart
+                    </div>
+                    <div class="button-block-footer" style="grid-template-columns: repeat(1, 1fr);">
+                        <select class="font-family-select">
+                            <option value="Arial" style="font-family: Arial;">Arial</option>
+                            <option value="Times New Roman" style="font-family: 'Times New Roman';">Times New Roman</option>
+                            <option value="Courier New" style="font-family: 'Courier New';">Courier New</option>
+                            <option value="Quicksand" style="font-family: Quicksand;">Quicksand</option>
+                            <option value="Tangerine" style="font-family: Tangerine;">Tangerine</option>
+                            <option value="Roboto" style="font-family: Roboto;">Roboto</option>
+                            <option value="Lora" style="font-family: Lora;">Lora</option>
+                            <option value="Karla" style="font-family: Karla;">Karla</option>
+                            <option value="Anton" style="font-family: Anton;">Anton</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-block">
+                    <div class="button-block-header">
+                        Schriftstil
+                    </div>
+                    <div class="button-block-footer" style="grid-template-columns: repeat(1, 1fr);">
+                        <select class="font-style-select">
+                            <option value="normal">Normal</option>
+                            <option value="italic">Kursiv</option>
+                            <option value="bold">Fett</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div style="grid-template-columns: repeat(2, 1fr);">
+                <div class="button-block">
+                    <div class="button-block-header">
+                        Hintergrund
+                    </div>
+                    <div class="button-block-footer" style="grid-template-columns: repeat(1, 1fr);">
+                        <input type="color" class="background-color-input" value="#000000">
+                    </div>
+                </div>
+                <div class="button-block">
+                    <div class="button-block-header">
+                        Transparenz
+                    </div>
+                    <div class="button-block-footer" style="grid-template-columns: repeat(1, 1fr);">
+                        <input type="range" min=0 max=255 class="background-transparency-input" value=255>
+                    </div>
+                </div>
+            </div>
+            <div style="grid-template-columns: repeat(3, 1fr);">
+                <div class="button-block">
+                    <div class="button-block-header">
+                        Randfarbe
+                    </div>
+                    <div class="button-block-footer" style="grid-template-columns: repeat(1, 1fr);">
+                        <input type="color" class="border-color-input" value="#000000">
+                    </div>
+                </div>
+                <div class="button-block">
+                    <div class="button-block-header">
+                        Randbreite
+                    </div>
+                    <div class="button-block-footer">
+                        <button class="increase-border-width-btn">
+                            +
+                        </button>
+                        <button class="decrease-border-width-btn">
+                            -
+                        </button>
+                    </div>
+                </div>
+                <div class="button-block">
+                    <div class="button-block-header">
+                        Eckenradius
+                    </div>
+                    <div class="button-block-footer">
+                        <button class="increase-border-radius-btn">
+                            +
+                        </button>
+                        <button class="decrease-border-radius-btn">
+                            -
+                        </button>
+                    </div>
+                </div>
+            </div>  
+            <div style="grid-template-columns: repeat(2, 1fr);">
+                <button class="bring-slide-element-to-front-btn">
+                    Vordergrund
+                </button>
+                <button class="bring-slide-element-to-back-btn">
+                    Hintergrund
+                </button>
+            </div>
+            <div style="grid-template-columns: repeat(2, 1fr);">
+                <button class="duplicate-slide-element-btn">
+                    Duplizieren
+                </button>
+                <button class="delete-slide-element-btn">
+                    Löschen
+                </button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="devider"></div>
+            <div class="taskbar">
+                <button class="present-btn" title="Präsentation starten [F4]">
+                    Präsentieren
+                </button>
+                <div class="devider"></div>
+                <button class="add-slide-btn">
+                    Folie +
+                </button>
+                <button class="add-slide-element-btn">
+                    Element +
+                </button>
+                <div class="devider"></div>
+            </div>
+            <div class="secondary-content">
+                <div class="sidebar">
+                </div>
+                <div class="main-content-area">
+                    <div class="slide-container">
+                        <div class="slide">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="present-overlay" style="display: none;"></div>
+        <div class="present-over-overlay" style="display: none;"></div>
+
+        <footer>
+            <p><img src="res/presi-logo.png" style="height: 0.9em; width: 0.9em;"> Presi; Noel Friedrich: "<output id="presentation_name_output"></output>". <a href="search">Neu / Öffnen</a>
+            <i>(Vor <output id="saved_seconds_ago_output">-</output> Sekunden gespeichert)</i></p>
+        </footer>
+
+        <script src="js/constants.js"></script>
+        <script src="js/preperation.js"></script>
+        <script src="js/networking.js"></script>
+        <script src="js/slide.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/shortcuts.js"></script>
+
+    </body>
+
+</html>
