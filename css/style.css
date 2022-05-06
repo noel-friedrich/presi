@@ -1,0 +1,482 @@
+html {
+    --sidebar-width: 20%;
+    --header-background: #ffffff;
+    --lighter-header-background: #646464;
+    --header-color: #333333;
+    --background-color: #f0f0f0;
+    --text-color: #333333;
+    --sidebar-background: #f5f5f5;
+    --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --taskbar-background: white;
+    --taskbar-color: #333333;
+    --border-color: #c0c0c0;
+    --border: 1px solid var(--border-color);
+    --slide-aspect-ration: 16 / 9;
+    --blue: rgb(89, 152, 247);
+}
+
+/* <ANIMATIONS> */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+@keyframes moveIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes moveOut {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* </ANIMATIONS> */
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+}
+
+h1 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+footer {
+    background-color: var(--header-background);
+    padding: 20px;
+    margin: 0;
+    color: var(--header-color);
+    border-top: var(--border);
+}
+
+footer > p {
+    margin: 0;
+    font-size: 0.8rem;
+    font-family: var(--font-family);
+}
+
+div.main-content {
+    height: calc(100vh - 0.8rem - 40px - 3px);
+    width: 100%;
+    background: var(--background-color);
+    overflow: hidden;
+}
+
+div.taskbar {
+    background-color: var(--taskbar-background);
+    color: var(--taskbar-color);
+    padding: 10px;
+    border-top: var(--border);
+    border-bottom: var(--border);
+    height: 5rem;
+    box-sizing: border-box;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    --gap: 10px;
+}
+
+.button-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.button-block-header {
+    padding: 5px;
+    font-size: 0.85em;
+    font-family: var(--font-family);
+    background: #efefef;
+    border: var(--border);
+    border-left: none;
+    border-right: none;
+}
+
+.button-block-footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.button-block-footer > * {
+    padding: 0 !important;
+    font-family: var(--font-family);
+    border-left: 0 !important;
+    border-top: 0 !important;
+    width: 100%;
+}
+
+.button-block-footer > *:nth-child(1) {
+    border-left: var(--border) !important; 
+}
+
+div.taskbar button, .contextmenu button {
+    font-family: var(--font-family);
+    width: auto;
+    border: var(--border);
+    background-color: #efefef;
+    padding: 10px;
+    border-radius: 0px;
+}
+
+input[type=color] {
+    height: 100%;
+}
+
+select {
+    background: #efefef;
+    border: none;
+}
+
+div.taskbar button:hover, .contextmenu button:hover {
+    background-color: #e0e0e0 !important;
+    cursor: pointer;
+}
+
+div.taskbar > input[type=number], div.taskbar > input[type=text] {
+    border: var(--border);
+    background-color: #efefef;
+    padding: 10px;
+    border-radius: 0px;
+    width: 3em;
+}
+
+div.taskbar > *:not(:nth-child(1)) {
+    margin-left: var(--gap);
+}
+
+div.taskbar > div.devider {
+    width: 1px;
+    height: calc(100% + 20px);
+    margin-top: -10px;
+    background-color: var(--border-color);
+    margin-left: var(--gap);
+}
+
+div.secondary-content {
+    height: calc(100% - 5rem);
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+}
+
+div.sidebar {
+    background-color: var(--sidebar-background);
+    border-right: var(--border);
+    padding: 10%;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+div.sidebar-slide {
+    background-color: white;
+    width: 100%;
+    aspect-ratio: var(--slide-aspect-ration);
+    border: var(--border);
+    margin-bottom: 10%;
+    cursor: pointer;
+    position: relative;
+}
+
+div.sidebar-slide.active {
+    border-color: var(--blue);
+    cursor: initial;
+}
+
+div.sidebar-slide-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+div.sidebar-slide-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--border-color);
+    border-bottom: var(--border);
+    border-left: var(--border);
+    padding: 5px;
+    border-radius: 0px;
+    cursor: pointer;
+    width: 1.2em;
+    height: 1.2em;
+    text-align: center;
+}
+
+div.sidebar-slide-duplicate {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--border-color);
+    border-bottom: var(--border);
+    border-right: var(--border);
+    padding: 5px;
+    border-radius: 0px;
+    cursor: pointer;
+    width: 1.2em;
+    height: 1.2em;
+    text-align: center;
+}
+
+div.sidebar-slide.active div.sidebar-slide-delete,
+div.sidebar-slide.active div.sidebar-slide-duplicate {
+    color: var(--blue);
+    border-color: var(--blue);
+}
+
+div.sidebar-slide-delete:hover,
+div.sidebar-slide-duplicate:hover {
+    background-color: var(--blue);
+    color: white !important;
+}
+
+div.sidebar-slide.active > div.sidebar-slide-text {
+    color: var(--blue);
+    opacity: 0.8;
+    cursor: default;
+}
+
+div.main-content-area {
+    background-color: var(--background-color);
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+div.slide-container {
+    background-color: white;
+    border: var(--border);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    aspect-ratio: var(--slide-aspect-ration);
+    transition: opacity 0.25s;
+}
+
+div.slide-container.presenting {
+    z-index: 200;
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+}
+
+div.slide {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+div.slide-element {
+    position: absolute;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    animation-fill-mode: forwards !important;  
+}
+
+div.slide-element.presenting {
+    animation: fadeIn 0.5s;
+}
+
+div.slide-element.unload {
+    animation: fadeOut 0.5s;
+}
+
+div.slide-element.customFocus {
+    outline: 1px dashed var(--blue) !important;
+}
+
+div.slide-element:hover {
+    outline: 1px dashed var(--border-color);
+}
+
+div.slide-element button.move-button {
+    position: absolute;
+    --size: 20px;
+    top: calc(var(--size) * -1 - 10px);
+    left: calc(50% - var(--size) / 2);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 100%;
+    border: var(--border);
+    border-color: var(--blue);
+    cursor: move;
+    background: transparent;
+}
+
+div.slide-element button.expand {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: var(--blue);
+    opacity: 0;
+}
+
+div.slide-element button.expand.east {
+    right: -10px;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    cursor: ew-resize;
+    background-color: rgb(107, 218, 113);
+}
+
+div.slide-element button.expand.west {
+    left: -10px;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    cursor: ew-resize;
+    background-color: rgb(218, 174, 107);
+}
+
+div.slide-element button.expand.north {
+    right: 0;
+    top: -10px;
+    width: 100%;
+    height: 10px;
+    cursor: ns-resize;
+    background-color: rgb(218, 107, 107);
+}
+
+div.slide-element button.expand.south {
+    right: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 10px;
+    cursor: ns-resize;
+    background-color: rgb(107, 164, 218);
+}
+
+div.slide-element button.expand.north-east {
+    right: -10px;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    cursor: nesw-resize;
+    background-color: rgb(218, 179, 107);
+}
+
+div.slide-element button.expand.north-west {
+    left: -10px;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    cursor: nwse-resize;
+    background-color: rgb(218, 124, 107);
+}
+
+div.slide-element button.expand.south-east {
+    right: -10px;
+    bottom: -10px;
+    width: 10px;
+    height: 10px;
+    cursor: nwse-resize;
+    background-color: rgb(107, 218, 218);
+}
+
+div.slide-element button.expand.south-west {
+    left: -10px;
+    bottom: -10px;
+    width: 10px;
+    height: 10px;
+    cursor: nesw-resize;
+    background-color: rgb(107, 211, 218);
+}
+
+div.present-overlay {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+div.present-over-overlay {
+    z-index: 300;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: initial;
+}
+
+div.slide-element-contextmenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 150;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+div.slide-element-contextmenu * {
+    background-color: white !important;
+}
+
+div.slide-element-contextmenu > div {
+    display: grid;
+}
+
+div.slide-element-contextmenu > div .button-block-footer {
+    background-color: #efefef;
+    box-sizing: border-box;
+}
+
+div.slide-element-contextmenu > div .button-block-footer > input[type=range] {
+    width: calc(100% - 10px);
+}
+
+select > option {
+    background-color: white;
+    padding: 5px;
+    font-size: 1.5em;
+}
